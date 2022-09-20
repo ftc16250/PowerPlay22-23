@@ -1,6 +1,6 @@
 ## NOTICE
 
-This repository contains the public FTC SDK for the Freight Frenzy (2021-2022) competition season.
+This repository contains the public FTC SDK for the Power Play (2022-2023) competition season.
 
 ## Welcome!
 This GitHub repository contains the source code that is used to build an Android app to control a *FIRST* Tech Challenge competition robot.  To use this SDK, download/clone the entire project to your local computer.
@@ -50,7 +50,7 @@ This project contains a large selection of Sample OpModes (robot code examples) 
 
 Samples Folder: &nbsp;&nbsp; [/FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/external/samples](FtcRobotController/src/main/java/org/firstinspires/ftc/robotcontroller/external/samples)
 
-The readme.md file located in the [/TeamCode/src/main/java/org/firstinspires/ftc/teamcode](TeamCode/src/main/java/org/firstinspires/ftc/teamcode) folder contains an explanation of the sample naming convention, and instructions on how to copy them to your own project space.
+The readme.md file located in the [/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/ftc16250](TeamCode/src/main/java/org/firstinspires/ftc/teamcode/ftc16250) folder contains an explanation of the sample naming convention, and instructions on how to copy them to your own project space.
 
 # Release Information
 
