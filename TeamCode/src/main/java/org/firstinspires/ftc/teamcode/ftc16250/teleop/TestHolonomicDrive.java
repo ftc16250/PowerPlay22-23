@@ -27,6 +27,11 @@ public class TestHolonomicDrive extends OpMode {
             drive.setMotorPower(1, 1, 1, 1);
         }
 
+        if (gamepad1.b) {
+            // check what happens when you set negative power
+            drive.setMotorPower(-1, -1, -1, -1);
+        }
+
         // don't spin motor if nothing is pressed
         else drive.setMotorPower(0, 0, 0, 0);
     }
