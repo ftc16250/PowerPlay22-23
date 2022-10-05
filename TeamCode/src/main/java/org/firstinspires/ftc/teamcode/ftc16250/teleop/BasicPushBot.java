@@ -10,6 +10,9 @@ import org.firstinspires.ftc.teamcode.ftc16250.hardware.HolonomicDriveHardware;
 public class BasicPushBot extends OpMode {
     HolonomicDriveHardware driver = new HolonomicDriveHardware();
 
+    // determine whether a joystick is pointing a specific way based on if it is within the following bounds
+    private static final double GAMEPAD_HUMAN_ERROR_PLAY = 0.10;
+
     @Override
     public void init() {
         driver.init(hardwareMap);
@@ -30,50 +33,52 @@ public class BasicPushBot extends OpMode {
 
         // forward
         // if left_stick is pointing up and isn't pointing left or right
-        if (gamepad1.left_stick_y > 0 && (gamepad1.left_stick_x < 0.10 && gamepad1.left_stick_x > -0.10)) {
+        if (gamepad1.left_stick_y > 0 && is_within_bounds(gamepad1.left_stick_x)) {
             driver.setMotorDirection(
                     DcMotorSimple.Direction.FORWARD,
                     DcMotorSimple.Direction.FORWARD,
                     DcMotorSimple.Direction.FORWARD,
                     DcMotorSimple.Direction.FORWARD
             );
-            driver.setMotorPower(1, 1, 1, 1);
+            driver.setMotorPower(gamepad1.left_stick_y, gamepad1.left_stick_y, gamepad1.left_stick_y, gamepad1.left_stick_y);
         }
 
         // reverse
         // if left_stick is pointing down and isn't pointing left or right
-        else if (gamepad1.left_stick_y < 0 && (gamepad1.left_stick_x < 0.10 && gamepad1.left_stick_x > -0.10)) {
+        else if (gamepad1.left_stick_y < 0 && is_within_bounds(gamepad1.left_stick_x)) {
             driver.setMotorDirection(
                     DcMotorSimple.Direction.REVERSE,
                     DcMotorSimple.Direction.REVERSE,
                     DcMotorSimple.Direction.REVERSE,
                     DcMotorSimple.Direction.REVERSE
             );
-            driver.setMotorPower(1, 1, 1, 1);
+            // assuming left_stick_y is less than 0, we must make the value positive before setting it as the power
+            driver.setMotorPower(-gamepad1.left_stick_y, -gamepad1.left_stick_y, -gamepad1.left_stick_y, -gamepad1.left_stick_y);
         }
 
         // left
         // if left_stick is pointing to the left and isn't pointing up or down
-        else if (gamepad1.left_stick_x < 0 && (gamepad1.left_stick_y < 0.10 || gamepad1.left_stick_y > -0.10)) {
+        else if (gamepad1.left_stick_x < 0 && is_within_bounds(gamepad1.left_stick_x)) {
             driver.setMotorDirection(
                     DcMotorSimple.Direction.REVERSE,
                     DcMotorSimple.Direction.FORWARD,
                     DcMotorSimple.Direction.FORWARD,
                     DcMotorSimple.Direction.REVERSE
             );
-            driver.setMotorPower(1, 1, 1, 1);
+            // assuming left_stick_x is less than 0, we must make the value positive before setting it as the power
+            driver.setMotorPower(-gamepad1.left_stick_x, -gamepad1.left_stick_x, -gamepad1.left_stick_x, -gamepad1.left_stick_x);
         }
 
         // right
         // if left_stick is pointing to the right and isn't pointing up or down
-        else if (gamepad1.left_stick_x > 0 && (gamepad1.left_stick_y < 0.10 || gamepad1.left_stick_y > -0.10)) {
+        else if (gamepad1.left_stick_x > 0 && is_within_bounds(gamepad1.left_stick_x)) {
             driver.setMotorDirection(
                     DcMotorSimple.Direction.FORWARD,
                     DcMotorSimple.Direction.REVERSE,
                     DcMotorSimple.Direction.REVERSE,
                     DcMotorSimple.Direction.FORWARD
             );
-            driver.setMotorPower(1, 1, 1, 1);
+            driver.setMotorPower(gamepad1.left_stick_x, gamepad1.left_stick_x, gamepad1.left_stick_x, gamepad1.left_stick_x);
         }
 
         // strafe forward to the left
@@ -85,7 +90,7 @@ public class BasicPushBot extends OpMode {
                     DcMotorSimple.Direction.FORWARD,
                     DcMotorSimple.Direction.FORWARD  // bottom right direction doesn't matter as it isn't gonna be moving
             );
-            driver.setMotorPower(0, 1, 1, 0);
+            driver.setMotorPower(0, gamepad1.left_stick_y, -gamepad1.left_stick_x, 0);
         }
 
         // strafe forward to the right
@@ -97,7 +102,7 @@ public class BasicPushBot extends OpMode {
                     DcMotorSimple.Direction.FORWARD, // bottom left direction doesn't matter as it isn't gonna be moving
                     DcMotorSimple.Direction.FORWARD
             );
-            driver.setMotorPower(1, 0, 0, 1);
+            driver.setMotorPower(gamepad1.left_stick_y, 0, 0, gamepad1.left_stick_x);
         }
 
         // strafe backwards to the left
@@ -109,7 +114,7 @@ public class BasicPushBot extends OpMode {
                     DcMotorSimple.Direction.REVERSE,
                     DcMotorSimple.Direction.REVERSE  // bottom right direction doesn't matter as it isn't gonna be moving
             );
-            driver.setMotorPower(0, 1, 1, 0);
+            driver.setMotorPower(0, -gamepad1.left_stick_y, -gamepad1.left_stick_x, 0);
         }
 
         // strafe backwards to the right
@@ -121,10 +126,16 @@ public class BasicPushBot extends OpMode {
                     DcMotorSimple.Direction.REVERSE, // bottom left direction doesn't matter as it isn't gonna be moving
                     DcMotorSimple.Direction.REVERSE
             );
-            driver.setMotorPower(1, 0, 0, 1);
+            driver.setMotorPower(-gamepad1.left_stick_y, 0, 0, gamepad1.left_stick_x);
         }
 
         // don't move robot if nothing is pressed
         else driver.setMotorPower(0, 0, 0, 0);
+    }
+
+    // check whether number is between the bounds of human error and intentionally being off of the line
+    // check if value is between the GAMEPAD_HUMAN_ERROR_PLAY
+    boolean is_within_bounds(double n) {
+        return (n < GAMEPAD_HUMAN_ERROR_PLAY && n > -GAMEPAD_HUMAN_ERROR_PLAY);
     }
 }

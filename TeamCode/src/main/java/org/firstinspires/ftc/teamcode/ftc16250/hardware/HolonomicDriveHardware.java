@@ -29,7 +29,7 @@ public class HolonomicDriveHardware {
     }
 
     // set power of all motors
-    public void setMotorPower(int flPower, int frPower, int blPower, int brPower) {
+    public void setMotorPower(double flPower, double frPower, double blPower, double brPower) {
         frontLeft.setPower(flPower);
         frontRight.setPower(frPower);
         backLeft.setPower(blPower);
