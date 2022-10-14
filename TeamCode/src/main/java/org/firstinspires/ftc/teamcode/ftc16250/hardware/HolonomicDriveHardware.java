@@ -27,6 +27,12 @@ public class HolonomicDriveHardware {
         backLeft.setDirection(blDirection);
         backRight.setDirection(brDirection);
     }
+    public void setMotorDirection(DcMotorSimple.Direction direction) {
+        frontLeft.setDirection(direction);
+        frontRight.setDirection(direction);
+        backLeft.setDirection(direction);
+        backRight.setDirection(direction);
+    }
 
     // set power of all motors
     public void setMotorPower(double flPower, double frPower, double blPower, double brPower) {
@@ -34,5 +40,11 @@ public class HolonomicDriveHardware {
         frontRight.setPower(frPower);
         backLeft.setPower(blPower);
         backRight.setPower(brPower);
+    }
+    public void setMotorPower(double power) {
+        frontLeft.setPower(power);
+        frontRight.setPower(power);
+        backLeft.setPower(power);
+        backRight.setPower(power);
     }
 }
