@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import org.firstinspires.ftc.teamcode.ftc16250.hardware.HolonomicDriveHardware;
 
 @TeleOp
-public class BasicPushBot extends OpMode {
+public class BasicHolonomicPushBot extends OpMode {
     HolonomicDriveHardware driver = new HolonomicDriveHardware();
 
     // determine whether a joystick is pointing a specific way based on if it is within the following bounds
