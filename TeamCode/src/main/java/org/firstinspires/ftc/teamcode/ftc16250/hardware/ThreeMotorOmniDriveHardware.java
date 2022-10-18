@@ -38,10 +38,10 @@ public class ThreeMotorOmniDriveHardware {
         rightMotor.setPower(right);
         centerMotor.setPower(center);
     }
-    public void setMotorDirection(double direction)
+    public void setMotorPower(double power)
     {
-        leftMotor.setPower(direction);
-        rightMotor.setPower(direction);
-        centerMotor.setPower(direction);
+        leftMotor.setPower(power);
+        rightMotor.setPower(power);
+        centerMotor.setPower(power);
     }
 }
