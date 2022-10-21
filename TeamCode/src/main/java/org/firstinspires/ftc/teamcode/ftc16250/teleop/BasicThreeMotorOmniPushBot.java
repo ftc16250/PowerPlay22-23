@@ -27,7 +27,7 @@ public class BasicThreeMotorOmniPushBot extends OpMode {
         // if left_stick is pointing up and isn't pointing left or right
         if (gamepad1.left_stick_y > 0 && is_within_bounds(gamepad1.left_stick_x)) {
             driver.setMotorDirection(DcMotorSimple.Direction.FORWARD);
-            driver.setMotorPower(gamepad1.left_stick_y, gamepad1.right_stick_y, 0);
+            driver.setMotorPower(gamepad1.left_stick_y, gamepad1.left_stick_y, 0);
         }
 
         // reverse
@@ -35,7 +35,7 @@ public class BasicThreeMotorOmniPushBot extends OpMode {
         else if (gamepad1.left_stick_y < 0 && is_within_bounds(gamepad1.left_stick_x)) {
             driver.setMotorDirection(DcMotorSimple.Direction.REVERSE);
             // assuming left_stick_y is less than 0, we must make the value positive before setting it as the power
-            driver.setMotorPower(-gamepad1.left_stick_y, -gamepad1.right_stick_y, 0);
+            driver.setMotorPower(-gamepad1.left_stick_y, -gamepad1.left_stick_y, 0);
         }
 
         // left
@@ -51,6 +51,38 @@ public class BasicThreeMotorOmniPushBot extends OpMode {
         else if (gamepad1.left_stick_x > 0 && is_within_bounds(gamepad1.left_stick_x)) {
             driver.setMotorDirection(DcMotorSimple.Direction.REVERSE);
             driver.setMotorPower(0, 0, gamepad1.left_stick_x);
+        }
+
+        // front left
+        else if (gamepad1.left_stick_y > 0 && gamepad1.left_stick_x < 0) {
+            driver.setMotorDirection(
+                    DcMotorSimple.Direction.FORWARD,
+                    DcMotorSimple.Direction.FORWARD,
+                    DcMotorSimple.Direction.REVERSE
+            );
+            driver.setMotorPower(gamepad1.left_stick_y, 0, -gamepad1.left_stick_x);
+        }
+
+        // front right
+        else if (gamepad1.left_stick_y > 0 && gamepad1.left_stick_x > 0) {
+            driver.setMotorDirection(DcMotorSimple.Direction.FORWARD);
+            driver.setMotorPower(0, gamepad1.left_stick_y, gamepad1.left_stick_x);
+        }
+
+        // back left
+        else if (gamepad1.left_stick_y < 0 && gamepad1.left_stick_x < 0) {
+            driver.setMotorDirection(DcMotorSimple.Direction.REVERSE);
+            driver.setMotorPower(-gamepad1.left_stick_y, 0, -gamepad1.left_stick_x);
+        }
+
+        // back right
+        else if (gamepad1.left_stick_y < 0 && gamepad1.left_stick_x > 0) {
+            driver.setMotorDirection(
+                    DcMotorSimple.Direction.REVERSE,
+                    DcMotorSimple.Direction.REVERSE,
+                    DcMotorSimple.Direction.FORWARD
+            );
+            driver.setMotorPower(0, -gamepad1.right_stick_y, gamepad1.left_stick_x);
         }
 
         // don't move robot if nothing is pressed
