@@ -1,10 +1,12 @@
 package org.firstinspires.ftc.teamcode.ftc16250.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.teamcode.ftc16250.hardware.ThreeMotorOmniDriveHardware;
 
+@TeleOp(group = "test")
 public class TestThreeMotorOmniDrive extends OpMode {
     public ThreeMotorOmniDriveHardware drive;
 
