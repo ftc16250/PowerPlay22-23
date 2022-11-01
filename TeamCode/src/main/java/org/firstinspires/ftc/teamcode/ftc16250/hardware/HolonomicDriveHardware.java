@@ -15,7 +15,7 @@ public class HolonomicDriveHardware {
     public void init(HardwareMap hardwareMap)
     {
         frontLeft = hardwareMap.dcMotor.get("frontLeftMotor");
-        frontLeft = hardwareMap.dcMotor.get("frontRightMotor");
+        frontRight = hardwareMap.dcMotor.get("frontRightMotor");
         backLeft = hardwareMap.dcMotor.get("backLeftMotor");
         backRight = hardwareMap.dcMotor.get("backRightMotor");
     }
