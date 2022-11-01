@@ -17,7 +17,7 @@ public class HolonomicDriveHardware {
         frontLeft = hardwareMap.dcMotor.get("frontLeftMotor");
         frontLeft = hardwareMap.dcMotor.get("frontRightMotor");
         backLeft = hardwareMap.dcMotor.get("backLeftMotor");
-        backLeft = hardwareMap.dcMotor.get("backLeftMotor");
+        backRight = hardwareMap.dcMotor.get("backRightMotor");
     }
 
     // set the direction of all motors
