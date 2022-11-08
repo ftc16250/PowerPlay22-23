@@ -23,15 +23,33 @@ public class HolonomicDriveHardware {
     // set the direction of all motors
     public void setMotorDirection(DcMotorSimple.Direction flDirection, DcMotorSimple.Direction frDirection, DcMotorSimple.Direction blDirection, DcMotorSimple.Direction brDirection) {
         frontLeft.setDirection(flDirection);
-        frontRight.setDirection(frDirection);
+
+        if (frDirection == DcMotorSimple.Direction.FORWARD)
+            frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        else
+            frontRight.setDirection(DcMotorSimple.Direction.FORWARD);
+
         backLeft.setDirection(blDirection);
-        backRight.setDirection(brDirection);
+
+        if (brDirection == DcMotorSimple.Direction.REVERSE)
+            backRight.setDirection(DcMotorSimple.Direction.FORWARD);
+        else
+            backRight.setDirection(DcMotorSimple.Direction.REVERSE);
     }
     public void setMotorDirection(DcMotorSimple.Direction direction) {
         frontLeft.setDirection(direction);
-        frontRight.setDirection(direction);
+
+        if (direction == DcMotorSimple.Direction.FORWARD)
+            frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        else
+            frontRight.setDirection(DcMotorSimple.Direction.FORWARD);
+
         backLeft.setDirection(direction);
-        backRight.setDirection(direction);
+
+        if (direction == DcMotorSimple.Direction.REVERSE)
+            backRight.setDirection(DcMotorSimple.Direction.FORWARD);
+        else
+            backRight.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     // set power of all motors
