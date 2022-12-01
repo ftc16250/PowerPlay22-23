@@ -10,9 +10,6 @@ import org.firstinspires.ftc.teamcode.ftc16250.hardware.ThreeMotorOmniDriveHardw
 public class BasicThreeMotorOmniPushBot extends OpMode {
     public ThreeMotorOmniDriveHardware driver;
 
-    // determine whether a joystick is pointing a specific way based on if it is within the following bounds
-    private static final double GAMEPAD_HUMAN_ERROR_PLAY = 0.10;
-
     @Override
     public void init() {
         driver.init(hardwareMap);
@@ -28,7 +25,7 @@ public class BasicThreeMotorOmniPushBot extends OpMode {
         telemetry.addData("gamepad1.right_trigger",  gamepad1.right_trigger);
 
         // left wheel
-        if (gamepad1.left_stick_y > 0) {;
+        if (gamepad1.left_stick_y > 0) {
             driver.setLeftDirection(DcMotorSimple.Direction.FORWARD);
             driver.setLeftPower(gamepad1.left_stick_y);
         }
@@ -38,7 +35,7 @@ public class BasicThreeMotorOmniPushBot extends OpMode {
         }
 
         // right wheel
-        if (gamepad1.right_stick_y > 0) {;
+        if (gamepad1.right_stick_y > 0) {
             driver.setRightDirection(DcMotorSimple.Direction.FORWARD);
             driver.setRightPower(gamepad1.right_stick_y);
         }

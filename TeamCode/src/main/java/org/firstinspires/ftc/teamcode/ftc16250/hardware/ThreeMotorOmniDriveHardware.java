@@ -21,23 +21,11 @@ public class ThreeMotorOmniDriveHardware {
         centerMotor = hardwareMap.dcMotor.get("centerMotor");
     }
 
-    public void setLeftDirection(DcMotorSimple.Direction d) {
-        leftMotor.setDirection(d);
-    }
-    public void setRightDirection(DcMotorSimple.Direction d) {
-        rightMotor.setDirection(d);
-    }
-    public void setCenterDirection(DcMotorSimple.Direction d) {
-        centerMotor.setDirection(d);
-    }
+    public void setLeftDirection(DcMotorSimple.Direction d) { leftMotor.setDirection(d); }
+    public void setRightDirection(DcMotorSimple.Direction d) { rightMotor.setDirection(d); }
+    public void setCenterDirection(DcMotorSimple.Direction d) { centerMotor.setDirection(d); }
 
-    public void setLeftPower(double p) {
-        leftMotor.setPower(p);
-    }
-    public void setRightPower(double p) {
-        rightMotor.setPower(p);
-    }
-    public void setCenterPower(double p) {
-        centerMotor.setPower(p);
-    }
+    public void setLeftPower(double p) { leftMotor.setPower(p); }
+    public void setRightPower(double p) { rightMotor.setPower(p); }
+    public void setCenterPower(double p) { centerMotor.setPower(p); }
 }
