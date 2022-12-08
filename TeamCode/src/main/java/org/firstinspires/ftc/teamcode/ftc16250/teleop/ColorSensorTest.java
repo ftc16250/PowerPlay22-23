@@ -22,13 +22,13 @@ public class ColorSensorTest extends OpMode {
         telemetry.addData("Blue", color.getBlue());
         telemetry.addData("Green", color.getGreen());
 
-        if (color.getGreen() * 2 > color.getBlue() + color.getRed()) {
+        if (color.getGreen() > color.getBlue() && color.getGreen() > color.getRed()) {
             telemetry.addData("Most Seen Color", "Green");
         }
-        else if (color.getBlue() * 2 > color.getGreen() + color.getRed()) {
+        else if (color.getBlue() > color.getGreen() && color.getBlue() > color.getRed()) {
             telemetry.addData("Most Seen Color", "Blue");
         }
-        else if(color.getRed() * 2 > color.getGreen() + color.getBlue()){
+        else if(color.getRed() > color.getBlue() && color.getRed() > color.getGreen()){
             telemetry.addData("Most Seen Color", "Red");
         }
 

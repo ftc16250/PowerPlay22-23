@@ -1,14 +1,15 @@
 package org.firstinspires.ftc.teamcode.ftc16250.hardware;
 
 import com.qualcomm.hardware.rev.RevColorSensorV3;
+import com.qualcomm.robotcore.hardware.ColorRangeSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class ColorSensorHardware{
 
-    public RevColorSensorV3 color;
+    public ColorRangeSensor color;
 
     public void init(HardwareMap hardwareMap) {
-        color =  hardwareMap.get(RevColorSensorV3.class, "colorSensor");
+        color =  hardwareMap.get(ColorRangeSensor.class, "colorSensor");
     }
 
     public int getGreen() {
