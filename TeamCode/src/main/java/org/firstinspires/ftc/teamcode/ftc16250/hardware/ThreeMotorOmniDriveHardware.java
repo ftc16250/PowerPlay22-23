@@ -27,12 +27,12 @@ public class ThreeMotorOmniDriveHardware {
         TICKS_PER_REV = leftMotor.getMotorType().getTicksPerRev();
     }
 
-    public void setLeftDirection(DcMotorSimple.Direction d) { leftMotor.setDirection(d); }
-    public void setRightDirection(DcMotorSimple.Direction d) {
+    public void setRightDirection(DcMotorSimple.Direction d) { rightMotor.setDirection(d); }
+    public void setLeftDirection(DcMotorSimple.Direction d) {
         if (d == DcMotorSimple.Direction.FORWARD)
-            rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+            leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         else
-            rightMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+            leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
     }
     public void setCenterDirection(DcMotorSimple.Direction d) {
         if (d == DcMotorSimple.Direction.FORWARD)
