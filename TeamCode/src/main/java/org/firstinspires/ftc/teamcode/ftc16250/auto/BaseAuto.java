@@ -3,11 +3,10 @@ package org.firstinspires.ftc.teamcode.ftc16250.auto;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.ftc16250.hardware.ThreeMotorOmniDriveHardware;
 
 public class BaseAuto {
-    ThreeMotorOmniDriveHardware driver;
+    ThreeMotorOmniDriveHardware driver = new ThreeMotorOmniDriveHardware();
 
     final double MOTOR_SPEED = 0.5;
 
