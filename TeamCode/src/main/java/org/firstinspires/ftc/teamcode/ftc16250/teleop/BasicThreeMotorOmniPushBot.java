@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.ftc16250.hardware.ThreeMotorOmniDriveHardw
 
 @TeleOp
 public class BasicThreeMotorOmniPushBot extends OpMode {
-    public ThreeMotorOmniDriveHardware driver;
+    public ThreeMotorOmniDriveHardware driver = new ThreeMotorOmniDriveHardware();
 
     @Override
     public void init() {
