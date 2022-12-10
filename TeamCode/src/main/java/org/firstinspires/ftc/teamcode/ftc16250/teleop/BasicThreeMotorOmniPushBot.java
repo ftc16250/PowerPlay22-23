@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.teamcode.ftc16250.hardware.ThreeMotorOmniDriveHardware;
+import org.firstinspires.ftc.teamcode.ftc16250.hardware.FourBarArmHardware;
 
 @TeleOp
 public class BasicThreeMotorOmniPushBot extends OpMode {
