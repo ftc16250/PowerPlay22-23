@@ -9,10 +9,12 @@ import org.firstinspires.ftc.teamcode.ftc16250.hardware.ThreeMotorOmniDriveHardw
 @TeleOp
 public class BasicThreeMotorOmniPushBot extends OpMode {
     public ThreeMotorOmniDriveHardware driver = new ThreeMotorOmniDriveHardware();
+    public FourBarArmHardware arm = new FourBarArmHardware();
 
     @Override
     public void init() {
         driver.init(hardwareMap);
+		arm.init(hardwareMap);
     }
 
     @Override
@@ -23,6 +25,8 @@ public class BasicThreeMotorOmniPushBot extends OpMode {
         telemetry.addData("gamepad1.right_stick_y", gamepad1.right_stick_y);
         telemetry.addData("gamepad1.left_trigger",  gamepad1.left_trigger);
         telemetry.addData("gamepad1.right_trigger",  gamepad1.right_trigger);
+        telemetry.addData("gamepad1.a",  gamepad1.a);
+        telemetry.addData("gamepad1.x",  gamepad1.x);
 
         // left wheel
         if (gamepad1.left_stick_y > 0)
@@ -48,5 +52,18 @@ public class BasicThreeMotorOmniPushBot extends OpMode {
 
         driver.setLeftPower(Math.abs(gamepad1.left_stick_y));
         driver.setRightPower(Math.abs(gamepad1.right_stick_y));
+
+		// arm motor
+		if (gamepad1.a) {
+			arm.setDirection(DcMotorSimple.Direction.FORWARD);
+			arm.setPower(0.5);
+		}
+		else if (gamepad1.x) {
+			arm.setDirection(DcMotorSimple.Direction.REVERSE);
+			arm.setPower(0.5);
+		}
+		else {
+			arm.setPower(0);
+		}
     }
 }
