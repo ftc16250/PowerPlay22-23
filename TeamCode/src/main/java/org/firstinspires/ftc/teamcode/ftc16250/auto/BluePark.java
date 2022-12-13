@@ -1,7 +1,9 @@
 package org.firstinspires.ftc.teamcode.ftc16250.auto;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+@Autonomous
 public class BluePark extends LinearOpMode {
     BaseAuto robot = new BaseAuto();
 
