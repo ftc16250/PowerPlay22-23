@@ -5,13 +5,21 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class FourBarArmHardware {
-    public DcMotor armMotor;
+    public DcMotor rightArmMotor;
+    public DcMotor leftArmMotor;
 
     // get wheel motors from robot hardware config
     public void init(HardwareMap hardwareMap) {
-        armMotor = hardwareMap.dcMotor.get("armMotor");
+        leftArmMotor = hardwareMap.dcMotor.get("leftArmMotor");
+        rightArmMotor = hardwareMap.dcMotor.get("rightArmMotor");
     }
 
-    public void setDirection(DcMotorSimple.Direction d) { armMotor.setDirection(d); }
-    public void setPower(double p) { armMotor.setPower(p); }
+    public void setDirection(DcMotorSimple.Direction d) {
+        leftArmMotor.setDirection(d);
+        rightArmMotor.setDirection(d);
+    }
+    public void setPower(double p) {
+        rightArmMotor.setPower(p);
+        leftArmMotor.setPower(p);
+    }
 }

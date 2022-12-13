@@ -29,4 +29,24 @@ public class BaseAuto {
         driver.resetLeftTicks();
         driver.resetRightTicks();
     }
+
+    public void strafe_cm_left(double num) {
+        driver.setCenterDirection(DcMotorSimple.Direction.REVERSE);
+
+        while (driver.getCenterCMTraveled() < num)
+            driver.setCenterPower(MOTOR_SPEED);
+
+        driver.setCenterPower(0);
+        driver.resetCenterTicks();
+    }
+
+    public void strafe_cm_right(double num) {
+        driver.setCenterDirection(DcMotorSimple.Direction.FORWARD);
+
+        while (driver.getCenterCMTraveled() < num)
+            driver.setCenterPower(MOTOR_SPEED);
+
+        driver.setCenterPower(0);
+        driver.resetCenterTicks();
+    }
 }

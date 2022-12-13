@@ -47,7 +47,10 @@ public class ThreeMotorOmniDriveHardware {
 
     public double getLeftCMTraveled() { return leftMotor.getCurrentPosition() / TICKS_PER_REV * CM_PER_ROT; }
     public double getRightCMTraveled() { return rightMotor.getCurrentPosition() / TICKS_PER_REV * CM_PER_ROT; }
+    public double getCenterCMTraveled() { return centerMotor.getCurrentPosition() / TICKS_PER_REV * CM_PER_ROT; }
 
     public void resetLeftTicks() { leftMotor.setTargetPosition(0); }
     public void resetRightTicks() { rightMotor.setTargetPosition(0); }
+    public void resetCenterTicks() { centerMotor.setTargetPosition(0); }
+
 }
