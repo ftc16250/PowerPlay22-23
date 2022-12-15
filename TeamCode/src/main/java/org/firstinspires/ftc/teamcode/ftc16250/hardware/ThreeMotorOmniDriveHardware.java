@@ -12,7 +12,7 @@ public class ThreeMotorOmniDriveHardware {
     // how many ticks are in a rotation
     double TICKS_PER_REV;
     // circumference of the wheel
-    double CM_PER_ROT = 25.1327;
+    public double CM_PER_ROT = 25.1327;
 
     // get wheel motors from robot hardware config
     public void init(HardwareMap hardwareMap) {
@@ -52,5 +52,4 @@ public class ThreeMotorOmniDriveHardware {
     public void resetLeftTicks() { leftMotor.setTargetPosition(0); }
     public void resetRightTicks() { rightMotor.setTargetPosition(0); }
     public void resetCenterTicks() { centerMotor.setTargetPosition(0); }
-
 }

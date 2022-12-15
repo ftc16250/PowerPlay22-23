@@ -7,7 +7,6 @@ import org.firstinspires.ftc.teamcode.ftc16250.hardware.ThreeMotorOmniDriveHardw
 
 public class BaseAuto {
     ThreeMotorOmniDriveHardware driver = new ThreeMotorOmniDriveHardware();
-
     final double MOTOR_SPEED = 0.5;
 
     public void init(HardwareMap hardwareMap) {
@@ -17,11 +16,10 @@ public class BaseAuto {
     public void move_cm_forward(double num) {
         driver.setLeftDirection(DcMotorSimple.Direction.FORWARD);
         driver.setRightDirection(DcMotorSimple.Direction.FORWARD);
+        driver.setLeftPower(MOTOR_SPEED);
+        driver.setRightPower(MOTOR_SPEED);
 
-        while (driver.getRightCMTraveled() < num) {
-            driver.setLeftPower(MOTOR_SPEED);
-            driver.setRightPower(MOTOR_SPEED);
-        }
+        while (driver.getRightCMTraveled() < num);
 
         driver.setLeftPower(0);
         driver.setRightPower(0);
@@ -32,9 +30,9 @@ public class BaseAuto {
 
     public void strafe_cm_left(double num) {
         driver.setCenterDirection(DcMotorSimple.Direction.REVERSE);
+        driver.setCenterPower(MOTOR_SPEED);
 
-        while (driver.getCenterCMTraveled() < num)
-            driver.setCenterPower(MOTOR_SPEED);
+        while (driver.getCenterCMTraveled() < num);
 
         driver.setCenterPower(0);
         driver.resetCenterTicks();
@@ -42,9 +40,9 @@ public class BaseAuto {
 
     public void strafe_cm_right(double num) {
         driver.setCenterDirection(DcMotorSimple.Direction.FORWARD);
+        driver.setCenterPower(MOTOR_SPEED);
 
-        while (driver.getCenterCMTraveled() < num)
-            driver.setCenterPower(MOTOR_SPEED);
+        while (driver.getCenterCMTraveled() < num);
 
         driver.setCenterPower(0);
         driver.resetCenterTicks();
