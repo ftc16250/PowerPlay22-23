@@ -28,9 +28,6 @@ public class BasicThreeMotorOmniPushBot extends OpMode {
         telemetry.addData("gamepad1.right_trigger",  gamepad1.right_trigger);
         telemetry.addData("gamepad1.a",  gamepad1.a);
         telemetry.addData("gamepad1.x",  gamepad1.x);
-        telemetry.addData("Right CM Traveled",  driver.getRightCMTraveled());
-        telemetry.addData("Left CM Traveled",  driver.getLeftCMTraveled());
-        telemetry.addData("Center CM Traveled",  driver.getCenterCMTraveled());
 
         // left wheel
         if (gamepad1.left_stick_y > 0)

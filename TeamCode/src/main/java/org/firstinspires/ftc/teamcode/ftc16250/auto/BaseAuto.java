@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.ftc16250.auto;
 
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -14,37 +15,48 @@ public class BaseAuto {
     }
 
     public void move_cm_forward(double num) {
+        driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        driver.setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
+        int tick_distance = (int) (num / driver.CM_PER_ROT * driver.TICKS_PER_REV);
+        driver.leftMotor.setTargetPosition(tick_distance);
+        driver.rightMotor.setTargetPosition(tick_distance);
+
         driver.setLeftDirection(DcMotorSimple.Direction.FORWARD);
         driver.setRightDirection(DcMotorSimple.Direction.FORWARD);
         driver.setLeftPower(MOTOR_SPEED);
         driver.setRightPower(MOTOR_SPEED);
 
-        while (driver.getRightCMTraveled() < num);
+        while (driver.leftMotor.isBusy() && driver.rightMotor.isBusy());
 
         driver.setLeftPower(0);
         driver.setRightPower(0);
-
-        driver.resetLeftTicks();
-        driver.resetRightTicks();
     }
 
     public void strafe_cm_left(double num) {
+        driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        driver.setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
+        int tick_distance = (int) (num / driver.CM_PER_ROT * driver.TICKS_PER_REV);
+        driver.centerMotor.setTargetPosition(tick_distance);
+
         driver.setCenterDirection(DcMotorSimple.Direction.REVERSE);
         driver.setCenterPower(MOTOR_SPEED);
 
-        while (driver.getCenterCMTraveled() < num);
+        while (driver.centerMotor.isBusy());
 
         driver.setCenterPower(0);
-        driver.resetCenterTicks();
     }
 
     public void strafe_cm_right(double num) {
+        driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        driver.setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
+        int tick_distance = (int) (num / driver.CM_PER_ROT * driver.TICKS_PER_REV);
+        driver.centerMotor.setTargetPosition(tick_distance);
+
         driver.setCenterDirection(DcMotorSimple.Direction.FORWARD);
         driver.setCenterPower(MOTOR_SPEED);
 
-        while (driver.getCenterCMTraveled() < num);
+        while (driver.centerMotor.isBusy());
 
         driver.setCenterPower(0);
-        driver.resetCenterTicks();
     }
 }
