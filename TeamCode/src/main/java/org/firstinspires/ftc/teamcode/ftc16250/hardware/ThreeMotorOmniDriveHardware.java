@@ -45,4 +45,9 @@ public class ThreeMotorOmniDriveHardware {
         rightMotor.setMode(mode);
         centerMotor.setMode(mode);
     }
+    public void setMotorTargetPos(int pos) {
+        leftMotor.setTargetPosition(pos);
+        centerMotor.setTargetPosition(pos);
+        rightMotor.setTargetPosition(pos);
+    }
 }
