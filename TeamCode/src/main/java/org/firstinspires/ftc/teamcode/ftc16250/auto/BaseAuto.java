@@ -16,10 +16,10 @@ public class BaseAuto {
 
     public void move_cm_forward(double num) {
         driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        driver.setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
         int tick_distance = (int) (num / driver.CM_PER_ROT * driver.TICKS_PER_REV);
         driver.leftMotor.setTargetPosition(tick_distance);
         driver.rightMotor.setTargetPosition(tick_distance);
+        driver.setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         driver.setLeftDirection(DcMotorSimple.Direction.FORWARD);
         driver.setRightDirection(DcMotorSimple.Direction.FORWARD);
@@ -34,9 +34,9 @@ public class BaseAuto {
 
     public void strafe_cm_left(double num) {
         driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        driver.setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
         int tick_distance = (int) (num / driver.CM_PER_ROT * driver.TICKS_PER_REV);
         driver.centerMotor.setTargetPosition(tick_distance);
+        driver.setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         driver.setCenterDirection(DcMotorSimple.Direction.REVERSE);
         driver.setCenterPower(MOTOR_SPEED);
@@ -48,9 +48,9 @@ public class BaseAuto {
 
     public void strafe_cm_right(double num) {
         driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        driver.setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
         int tick_distance = (int) (num / driver.CM_PER_ROT * driver.TICKS_PER_REV);
         driver.centerMotor.setTargetPosition(tick_distance);
+        driver.setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         driver.setCenterDirection(DcMotorSimple.Direction.FORWARD);
         driver.setCenterPower(MOTOR_SPEED);
