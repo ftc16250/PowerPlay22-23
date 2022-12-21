@@ -50,6 +50,9 @@ public class BasicThreeMotorOmniPushBot extends OpMode {
             driver.setCenterDirection(DcMotorSimple.Direction.FORWARD);
             driver.setCenterPower(gamepad1.right_trigger);
         }
+        else {
+            driver.setCenterPower(0);
+        }
 
         driver.setLeftPower(Math.abs(gamepad1.left_stick_y));
         driver.setRightPower(Math.abs(gamepad1.right_stick_y));

@@ -16,12 +16,13 @@ public class BaseAuto {
 
     public void move_cm_forward(double num) {
         driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        driver.setLeftDirection(DcMotorSimple.Direction.FORWARD);
+        driver.setRightDirection(DcMotorSimple.Direction.FORWARD);
+
         int tick_distance = (int) (num / driver.CM_PER_ROT * driver.TICKS_PER_REV);
         driver.setMotorTargetPos(tick_distance);
         driver.setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        driver.setLeftDirection(DcMotorSimple.Direction.FORWARD);
-        driver.setRightDirection(DcMotorSimple.Direction.FORWARD);
         driver.setLeftPower(MOTOR_SPEED);
         driver.setRightPower(MOTOR_SPEED);
 
@@ -33,11 +34,12 @@ public class BaseAuto {
 
     public void strafe_cm_left(double num) {
         driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        driver.setCenterDirection(DcMotorSimple.Direction.REVERSE);
+
         int tick_distance = (int) (num / driver.CM_PER_ROT * driver.TICKS_PER_REV);
         driver.setMotorTargetPos(tick_distance);
         driver.setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        driver.setCenterDirection(DcMotorSimple.Direction.REVERSE);
         driver.setCenterPower(MOTOR_SPEED);
 
         while (driver.centerMotor.isBusy());
@@ -47,11 +49,12 @@ public class BaseAuto {
 
     public void strafe_cm_right(double num) {
         driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        driver.setCenterDirection(DcMotorSimple.Direction.FORWARD);
+
         int tick_distance = (int) (num / driver.CM_PER_ROT * driver.TICKS_PER_REV);
         driver.setMotorTargetPos(tick_distance);
         driver.setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        driver.setCenterDirection(DcMotorSimple.Direction.FORWARD);
         driver.setCenterPower(MOTOR_SPEED);
 
         while (driver.centerMotor.isBusy());
