@@ -67,7 +67,8 @@ public class BasicThreeMotorOmniPushBot extends OpMode {
 			arm.setPower(0.5);
 		}
 		else {
-			arm.setPower(0);
+            // try using a fraction of power to effectively "brake" the motor.
+			arm.setPower(0.0001);
 		}
     }
 }
