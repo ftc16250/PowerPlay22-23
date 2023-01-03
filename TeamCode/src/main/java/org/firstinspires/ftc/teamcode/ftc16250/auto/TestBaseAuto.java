@@ -12,6 +12,6 @@ public class TestBaseAuto extends LinearOpMode {
         robot.init(hardwareMap);
         waitForStart();
         robot.move_cm_forward(15);
-        robot.strafe_cm_left(10);
+        robot.strafe_cm_right(10);
     }
 }
