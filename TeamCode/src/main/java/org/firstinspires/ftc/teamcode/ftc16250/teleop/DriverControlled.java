@@ -10,9 +10,9 @@ import org.firstinspires.ftc.teamcode.ftc16250.hardware.ThreeMotorOmniDriveHardw
 
 @TeleOp
 public class DriverControlled extends OpMode {
-    public ThreeMotorOmniDriveHardware driver;
-    public FourBarArmHardware arm;
-    public ManipulatorHardware manipulator;
+    public ThreeMotorOmniDriveHardware driver = new ThreeMotorOmniDriveHardware();
+    public FourBarArmHardware arm = new FourBarArmHardware();
+    public ManipulatorHardware manipulator = new ManipulatorHardware();
 
     @Override
     public void init() {
