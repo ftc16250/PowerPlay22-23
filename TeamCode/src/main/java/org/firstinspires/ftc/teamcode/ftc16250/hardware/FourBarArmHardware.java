@@ -12,13 +12,6 @@ public class FourBarArmHardware {
         armMotor = hardwareMap.dcMotor.get("armMotor");
     }
 
-    public void setDirection(DcMotorSimple.Direction d) {
-        if (d == DcMotorSimple.Direction.FORWARD)
-            armMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        else
-            armMotor.setDirection(DcMotorSimple.Direction.FORWARD);
-    }
-    public void setPower(double p) {
-        armMotor.setPower(p);
-    }
+    public void setDirection(DcMotorSimple.Direction d) { armMotor.setDirection(d); }
+    public void setPower(double p) { armMotor.setPower(p); }
 }
