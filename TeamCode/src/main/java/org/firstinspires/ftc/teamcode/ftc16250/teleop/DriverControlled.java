@@ -68,7 +68,7 @@ public class DriverControlled extends OpMode {
             arm.setDirection(DcMotorSimple.Direction.REVERSE);
             arm.setPower(0.5);
         }
-        else arm.setPower(0);
+        else arm.setPower(0.05);
 
         // manipulator
         if (gamepad2.a) manipulator.setPosition(1.0);
