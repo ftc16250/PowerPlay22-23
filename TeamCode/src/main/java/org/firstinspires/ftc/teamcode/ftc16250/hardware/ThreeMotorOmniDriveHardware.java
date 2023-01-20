@@ -1,13 +1,14 @@
 package org.firstinspires.ftc.teamcode.ftc16250.hardware;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class ThreeMotorOmniDriveHardware {
-    public DcMotor leftMotor;
-    public DcMotor rightMotor;
-    public DcMotor centerMotor;
+    public DcMotorEx leftMotor;
+    public DcMotorEx rightMotor;
+    public DcMotorEx centerMotor;
 
     // how many ticks are in a rotation
     public double TICKS_PER_REV;
@@ -16,9 +17,9 @@ public class ThreeMotorOmniDriveHardware {
 
     // get wheel motors from robot hardware config
     public void init(HardwareMap hardwareMap) {
-        leftMotor = hardwareMap.dcMotor.get("leftMotor");
-        rightMotor = hardwareMap.dcMotor.get("rightMotor");
-        centerMotor = hardwareMap.dcMotor.get("centerMotor");
+        leftMotor = hardwareMap.get(DcMotorEx.class, "leftMotor");
+        rightMotor = hardwareMap.get(DcMotorEx.class, "rightMotor");
+        centerMotor = hardwareMap.get(DcMotorEx.class, "centerMotor");
         TICKS_PER_REV = leftMotor.getMotorType().getTicksPerRev();
     }
 
@@ -39,6 +40,10 @@ public class ThreeMotorOmniDriveHardware {
     public void setLeftPower(double p) { leftMotor.setPower(p); }
     public void setRightPower(double p) { rightMotor.setPower(p); }
     public void setCenterPower(double p) { centerMotor.setPower(p); }
+
+    public void setLeftVelocity(double p) { leftMotor.setVelocity(p); }
+    public void setRightVelocity(double p) { rightMotor.setVelocity(p); }
+    public void setCenterVelocity(double p) { centerMotor.setVelocity(p); }
 
     public void setMotorMode(DcMotor.RunMode mode) {
         leftMotor.setMode(mode);

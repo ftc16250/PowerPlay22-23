@@ -18,47 +18,16 @@ public class BaseAuto {
         driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         driver.setLeftDirection(DcMotorSimple.Direction.FORWARD);
         driver.setRightDirection(DcMotorSimple.Direction.FORWARD);
-
-        int tick_distance = (int) (num / driver.CM_PER_ROT * driver.TICKS_PER_REV) / 2;
-        driver.setMotorTargetPos(tick_distance);
-        driver.setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-        driver.setLeftPower(MOTOR_SPEED);
-        driver.setRightPower(MOTOR_SPEED);
-
-        while (driver.leftMotor.isBusy() && driver.rightMotor.isBusy());
-
-        driver.setLeftPower(0);
-        driver.setRightPower(0);
-    }
-
-    public void strafe_cm_left(double num) {
-        driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        driver.setCenterDirection(DcMotorSimple.Direction.REVERSE);
-
-        int tick_distance = -(int) (num / driver.CM_PER_ROT * driver.TICKS_PER_REV);
-        driver.setMotorTargetPos(tick_distance);
-        driver.setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-        driver.setCenterPower(MOTOR_SPEED);
-
-        while (driver.centerMotor.isBusy());
-
-        driver.setCenterPower(0);
-    }
-
-    public void strafe_cm_right(double num) {
-        driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        driver.setCenterDirection(DcMotorSimple.Direction.FORWARD);
-
         int tick_distance = (int) (num / driver.CM_PER_ROT * driver.TICKS_PER_REV);
-        driver.setMotorTargetPos(tick_distance);
-        driver.setMotorMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        driver.setCenterPower(MOTOR_SPEED);
+        driver.setLeftVelocity(tick_distance/2);
+        driver.setRightVelocity(tick_distance/2);
 
-        while (driver.centerMotor.isBusy());
+        try { Thread.sleep(2000); }
+        catch (InterruptedException _) {}
 
-        driver.setCenterPower(0);
+        driver.setLeftVelocity(0);
+        driver.setRightVelocity(0);
+        driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 }
