@@ -30,12 +30,6 @@ public class DriverControlled extends OpMode {
         telemetry.addData("gamepad1.left_trigger",  gamepad1.left_trigger);
         telemetry.addData("gamepad1.right_trigger",  gamepad1.right_trigger);
 
-        handle_driving_input();
-        handle_arm_and_manipulator_input();
-    }
-
-    // all driving parts are controlled with gamepad1
-    void handle_driving_input() {
         // left wheel
         if (gamepad1.left_stick_y > 0) {
             driver.setLeftDirection(DcMotorSimple.Direction.FORWARD);
@@ -65,10 +59,7 @@ public class DriverControlled extends OpMode {
             driver.setCenterPower(gamepad1.right_trigger);
         }
         else driver.setCenterPower(0);
-    }
 
-    // all arm and manipulator based parts are controlled with gamepad2
-    void handle_arm_and_manipulator_input() {
         // four bar arm
         if (gamepad2.dpad_up) {
             arm.setDirection(DcMotorSimple.Direction.FORWARD);
