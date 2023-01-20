@@ -44,6 +44,7 @@ public class DriverControlled extends OpMode {
             driver.setLeftDirection(DcMotorSimple.Direction.REVERSE);
             driver.setLeftPower(-gamepad1.left_stick_y);
         }
+        else driver.setLeftPower(0);
 
         // right wheel
         if (gamepad1.right_stick_y > 0) {
@@ -53,6 +54,7 @@ public class DriverControlled extends OpMode {
             driver.setRightDirection(DcMotorSimple.Direction.REVERSE);
             driver.setRightPower(-gamepad1.right_stick_y);
         }
+        else driver.setRightPower(0);
 
         // center wheel
         if (gamepad1.left_trigger > 0) {
@@ -62,6 +64,7 @@ public class DriverControlled extends OpMode {
             driver.setCenterDirection(DcMotorSimple.Direction.FORWARD);
             driver.setCenterPower(gamepad1.right_trigger);
         }
+        else driver.setCenterPower(0);
     }
 
     // all arm and manipulator based parts are controlled with gamepad2
