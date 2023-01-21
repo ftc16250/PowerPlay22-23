@@ -11,6 +11,7 @@ public class BluePark extends LinearOpMode {
     public void runOpMode() {
         robot.init(hardwareMap);
         waitForStart();
-        robot.strafe_cm_right(72);
+		robot.rotate_deg_cw(90);
+		robot.move_cm_forward(72);
     }
 }

@@ -4,14 +4,16 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 @Autonomous
-public class TestBaseAuto extends LinearOpMode {
+public class ParkSignalZone extends LinearOpMode {
     BaseAuto robot = new BaseAuto();
+	FourBarArmHardware arm = new FourBarArmHardware();
 
     @Override
     public void runOpMode() {
         robot.init(hardwareMap);
+
         waitForStart();
-        robot.move_cm_forward(15);
-        robot.strafe_cm_right(10);
+		// move up towards signal cone
+		robot.move_cm_forward(30);
     }
 }
