@@ -4,15 +4,21 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+import org.firstinspires.ftc.teamcode.ftc16250.hardware.FourBarArmHardware;
+import org.firstinspires.ftc.teamcode.ftc16250.hardware.ManipulatorHardware;
 import org.firstinspires.ftc.teamcode.ftc16250.hardware.ThreeMotorOmniDriveHardware;
 
 @TeleOp
-public class BasicThreeMotorOmniPushBot extends OpMode {
-    public ThreeMotorOmniDriveHardware driver;
+public class DriverControlled extends OpMode {
+    public ThreeMotorOmniDriveHardware driver = new ThreeMotorOmniDriveHardware();
+    public FourBarArmHardware arm = new FourBarArmHardware();
+    public ManipulatorHardware manipulator = new ManipulatorHardware();
 
     @Override
     public void init() {
         driver.init(hardwareMap);
+        arm.init(hardwareMap);
+        manipulator.init(hardwareMap);
     }
 
     @Override
@@ -28,30 +34,46 @@ public class BasicThreeMotorOmniPushBot extends OpMode {
         if (gamepad1.left_stick_y > 0) {
             driver.setLeftDirection(DcMotorSimple.Direction.FORWARD);
             driver.setLeftPower(gamepad1.left_stick_y);
-        }
-        else if (gamepad1.left_stick_y < 0) {
+        } else if (gamepad1.left_stick_y < 0) {
             driver.setLeftDirection(DcMotorSimple.Direction.REVERSE);
             driver.setLeftPower(-gamepad1.left_stick_y);
         }
+        else driver.setLeftPower(0);
 
         // right wheel
         if (gamepad1.right_stick_y > 0) {
             driver.setRightDirection(DcMotorSimple.Direction.FORWARD);
             driver.setRightPower(gamepad1.right_stick_y);
-        }
-        else if (gamepad1.right_stick_y < 0) {
+        } else if (gamepad1.right_stick_y < 0) {
             driver.setRightDirection(DcMotorSimple.Direction.REVERSE);
             driver.setRightPower(-gamepad1.right_stick_y);
         }
+        else driver.setRightPower(0);
 
         // center wheel
         if (gamepad1.left_trigger > 0) {
             driver.setCenterDirection(DcMotorSimple.Direction.REVERSE);
             driver.setCenterPower(gamepad1.left_trigger);
-        }
-        else if (gamepad1.right_trigger > 0) {
+        } else if (gamepad1.right_trigger > 0) {
             driver.setCenterDirection(DcMotorSimple.Direction.FORWARD);
             driver.setCenterPower(gamepad1.right_trigger);
         }
+        else driver.setCenterPower(0);
+
+        // four bar arm
+        if (gamepad2.dpad_up) {
+            arm.setDirection(DcMotorSimple.Direction.FORWARD);
+            arm.setPower(0.5);
+        } else if (gamepad2.dpad_down) {
+            arm.setDirection(DcMotorSimple.Direction.REVERSE);
+            arm.setPower(0.5);
+        }
+        else arm.setPower(0.05);
+
+        // manipulator
+        if (gamepad2.a) manipulator.setPosition(1.0);
+        else manipulator.setPosition(0.5);
+
+        // chain lift
     }
 }
