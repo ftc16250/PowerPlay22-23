@@ -14,6 +14,8 @@ public class DriverControlled extends OpMode {
     public FourBarArmHardware arm = new FourBarArmHardware();
     public ManipulatorHardware manipulator = new ManipulatorHardware();
 
+    public final double MOTOR_SLOW_SPEED = 0.5;
+
     @Override
     public void init() {
         driver.init(hardwareMap);
@@ -33,30 +35,36 @@ public class DriverControlled extends OpMode {
         // left wheel
         if (gamepad1.left_stick_y > 0) {
             driver.setLeftDirection(DcMotorSimple.Direction.FORWARD);
-            driver.setLeftPower(gamepad1.left_stick_y);
+            if (gamepad1.left_bumper) driver.setLeftPower(MOTOR_SLOW_SPEED);
+            else driver.setLeftPower(gamepad1.left_stick_y);
         } else if (gamepad1.left_stick_y < 0) {
             driver.setLeftDirection(DcMotorSimple.Direction.REVERSE);
-            driver.setLeftPower(-gamepad1.left_stick_y);
+            if (gamepad1.left_bumper) driver.setLeftPower(MOTOR_SLOW_SPEED);
+            else driver.setLeftPower(-gamepad1.left_stick_y);
         }
         else driver.setLeftPower(0);
 
         // right wheel
         if (gamepad1.right_stick_y > 0) {
             driver.setRightDirection(DcMotorSimple.Direction.FORWARD);
-            driver.setRightPower(gamepad1.right_stick_y);
+            if (gamepad1.left_bumper) driver.setRightPower(MOTOR_SLOW_SPEED);
+            else driver.setRightPower(gamepad1.right_stick_y);
         } else if (gamepad1.right_stick_y < 0) {
             driver.setRightDirection(DcMotorSimple.Direction.REVERSE);
-            driver.setRightPower(-gamepad1.right_stick_y);
+            if (gamepad1.left_bumper) driver.setRightPower(MOTOR_SLOW_SPEED);
+            else driver.setRightPower(-gamepad1.right_stick_y);
         }
         else driver.setRightPower(0);
 
         // center wheel
         if (gamepad1.left_trigger > 0) {
             driver.setCenterDirection(DcMotorSimple.Direction.REVERSE);
-            driver.setCenterPower(gamepad1.left_trigger);
+            if (gamepad1.left_bumper) driver.setCenterPower(MOTOR_SLOW_SPEED);
+            else driver.setCenterPower(gamepad1.left_trigger);
         } else if (gamepad1.right_trigger > 0) {
             driver.setCenterDirection(DcMotorSimple.Direction.FORWARD);
-            driver.setCenterPower(gamepad1.right_trigger);
+            if (gamepad1.left_bumper) driver.setCenterPower(MOTOR_SLOW_SPEED);
+            else driver.setCenterPower(gamepad1.right_trigger);
         }
         else driver.setCenterPower(0);
 
