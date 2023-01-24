@@ -1,8 +1,10 @@
 package org.firstinspires.ftc.teamcode.ftc16250.auto;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.ftc16250.hardware.ColorSensorHardware;
 
+@Autonomous
 public class ParkSignalZone extends LinearOpMode {
     BaseAuto robot = new BaseAuto();
     ColorSensorHardware color = new ColorSensorHardware();
