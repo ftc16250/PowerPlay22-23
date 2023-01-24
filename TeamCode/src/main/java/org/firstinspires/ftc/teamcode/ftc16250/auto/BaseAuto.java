@@ -19,48 +19,49 @@ public class BaseAuto {
         catch (InterruptedException _) {}
 	}
 
-    public void move_cm_forward(double num) {
+    public void move_cm_forward(int cm, int seconds) {
         driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        driver.setLeftDirection(DcMotorSimple.Direction.FORWARD);
-        driver.setRightDirection(DcMotorSimple.Direction.FORWARD);
-        int tick_distance = (int) (num / driver.CM_PER_ROT * driver.TICKS_PER_REV);
-
-        driver.setLeftVelocity(tick_distance/2);
-        driver.setRightVelocity(tick_distance/2);
-		sleep(2000);
-
+        driver.setLeftDirection(DcMotorSimple.Direction.REVERSE);
+        driver.setRightDirection(DcMotorSimple.Direction.REVERSE);
+        int tick_distance = (int) (cm / driver.CM_PER_ROT * driver.TICKS_PER_REV);
+        driver.setLeftVelocity(tick_distance/seconds);
+        driver.setRightVelocity(tick_distance/seconds);
+		sleep(seconds * 1000);
         driver.setLeftVelocity(0);
         driver.setRightVelocity(0);
         driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
-	public void rotate_deg_cw(int deg) {
+	public void move_cm_backwards(int cm, int seconds) {
 		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-		driver.setLeftDirection(DcMotor.RunMode.FORWARD);
-		driver.setRightDirection(DcMotor.RunMode.REVERSE);
-		// calculate ticks to rotate x degrees
-		// assume that both wheels making a full rotation can turn the robot 360 degrees
-		int tick_distance = (deg / 360 * driver.TICKS_PER_REV);
-		driver.setLeftVelocity(tick_distance / 2);
-		driver.setRightVelocity(tick_distance / 2);
-		sleep(2000);
+		driver.setLeftDirection(DcMotorSimple.Direction.FORWARD);
+		driver.setRightDirection(DcMotorSimple.Direction.FORWARD);
+		int tick_distance = (int) (cm / driver.CM_PER_ROT * driver.TICKS_PER_REV);
+		driver.setLeftVelocity(tick_distance/seconds);
+		driver.setRightVelocity(tick_distance/seconds);
+		sleep(seconds * 1000);
 		driver.setLeftVelocity(0);
 		driver.setRightVelocity(0);
 		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 	}
 
-	public void rotate_deg_ccw(int deg) {
+	public void move_cm_right(int cm, int seconds) {
 		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-		driver.setLeftDirection(DcMotor.RunMode.REVERSE);
-		driver.setRightDirection(DcMotor.RunMode.FORWARD);
-		// calculate ticks to rotate x degrees
-		// assume that both wheels making a full rotation can turn the robot 360 degrees
-		int tick_distance = (deg / 360 * driver.TICKS_PER_REV);
-		driver.setLeftVelocity(tick_distance / 2);
-		driver.setRightVelocity(tick_distance / 2);
-		sleep(2000);
-		driver.setLeftVelocity(0);
-		driver.setRightVelocity(0);
+		driver.setCenterDirection(DcMotorSimple.Direction.FORWARD);
+		int tick_distance = (int) (cm / driver.CM_PER_ROT * driver.TICKS_PER_REV);
+		driver.setCenterVelocity(tick_distance/seconds);
+		sleep(seconds * 1000);
+		driver.setCenterVelocity(0);
+		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+	}
+
+	public void move_cm_left(int cm, int seconds) {
+		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+		driver.setCenterDirection(DcMotorSimple.Direction.REVERSE);
+		int tick_distance = (int) (cm / driver.CM_PER_ROT * driver.TICKS_PER_REV);
+		driver.setCenterVelocity(tick_distance/seconds);
+		sleep(seconds * 1000);
+		driver.setCenterVelocity(0);
 		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 	}
 }
