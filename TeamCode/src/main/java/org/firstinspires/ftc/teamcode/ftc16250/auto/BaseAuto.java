@@ -22,8 +22,8 @@ public class BaseAuto {
     public void move_cm_forward(int cm, int seconds) {
         driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         int tick_distance = (int) (cm / driver.CM_PER_ROT * driver.TICKS_PER_REV);
-        driver.setLeftVelocity(tick_distance/seconds);
-        driver.setRightVelocity(tick_distance/seconds);
+        driver.setLeftVelocity(-tick_distance/seconds);
+        driver.setRightVelocity(-tick_distance/seconds);
 		sleep(seconds * 1000);
         driver.setLeftVelocity(0);
         driver.setRightVelocity(0);
@@ -33,8 +33,8 @@ public class BaseAuto {
 	public void move_cm_backwards(int cm, int seconds) {
 		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 		int tick_distance = (int) (cm / driver.CM_PER_ROT * driver.TICKS_PER_REV);
-		driver.setLeftVelocity(-tick_distance/seconds);
-		driver.setRightVelocity(-tick_distance/seconds);
+		driver.setLeftVelocity(tick_distance/seconds);
+		driver.setRightVelocity(tick_distance/seconds);
 		sleep(seconds * 1000);
 		driver.setLeftVelocity(0);
 		driver.setRightVelocity(0);

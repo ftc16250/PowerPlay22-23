@@ -14,7 +14,7 @@ public class ParkSignalZone extends LinearOpMode {
         waitForStart();
 
         // move robot towards signal cone
-        robot.move_cm_backwards(40, 2);
+        robot.move_cm_backwards(30, 2);
 
         // read color on signal sleeve
         int red = color.getRed();
