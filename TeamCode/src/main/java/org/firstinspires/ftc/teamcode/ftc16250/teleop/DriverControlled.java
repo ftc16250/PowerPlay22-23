@@ -31,6 +31,8 @@ public class DriverControlled extends OpMode {
         telemetry.addData("gamepad1.right_stick_y", gamepad1.right_stick_y);
         telemetry.addData("gamepad1.left_trigger",  gamepad1.left_trigger);
         telemetry.addData("gamepad1.right_trigger",  gamepad1.right_trigger);
+        telemetry.addData("left ticks per rev", driver.leftMotor.getMotorType().getTicksPerRev());
+        telemetry.addData("right ticks per rev", driver.rightMotor.getMotorType().getTicksPerRev());
 
         // left wheel
         if (gamepad1.left_stick_y != 0) {

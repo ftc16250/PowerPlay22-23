@@ -21,9 +21,9 @@ public class BaseAuto {
 
     public void move_cm_forward(int cm, int seconds) {
         driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        int tick_distance = (int) (cm / driver.CM_PER_ROT * driver.TICKS_PER_REV);
-        driver.setLeftVelocity(-tick_distance/seconds);
-        driver.setRightVelocity(-tick_distance/seconds);
+        int velocity = (int) (cm / driver.CM_PER_ROT * driver.TICKS_PER_REV / seconds);
+        driver.setLeftVelocity(-velocity);
+        driver.setRightVelocity(-velocity);
 		sleep(seconds * 1000);
         driver.setLeftVelocity(0);
         driver.setRightVelocity(0);
@@ -32,9 +32,9 @@ public class BaseAuto {
 
 	public void move_cm_backwards(int cm, int seconds) {
 		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-		int tick_distance = (int) (cm / driver.CM_PER_ROT * driver.TICKS_PER_REV);
-		driver.setLeftVelocity(tick_distance/seconds);
-		driver.setRightVelocity(tick_distance/seconds);
+		int velocity = (int) (cm / driver.CM_PER_ROT * driver.TICKS_PER_REV / seconds);
+		driver.setLeftVelocity(velocity);
+		driver.setRightVelocity(velocity);
 		sleep(seconds * 1000);
 		driver.setLeftVelocity(0);
 		driver.setRightVelocity(0);
@@ -43,8 +43,8 @@ public class BaseAuto {
 
 	public void move_cm_right(int cm, int seconds) {
 		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-		int tick_distance = (int) (cm / driver.CM_PER_ROT * driver.TICKS_PER_REV);
-		driver.setCenterVelocity(tick_distance/seconds);
+		int velocity = (int) (cm / driver.CM_PER_ROT * driver.TICKS_PER_REV / seconds);
+		driver.setCenterVelocity(velocity);
 		sleep(seconds * 1000);
 		driver.setCenterVelocity(0);
 		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -52,8 +52,8 @@ public class BaseAuto {
 
 	public void move_cm_left(int cm, int seconds) {
 		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-		int tick_distance = (int) (cm / driver.CM_PER_ROT * driver.TICKS_PER_REV);
-		driver.setCenterVelocity(-tick_distance/seconds);
+		int velocity = (int) (cm / driver.CM_PER_ROT * driver.TICKS_PER_REV / seconds);
+		driver.setCenterVelocity(-velocity);
 		sleep(seconds * 1000);
 		driver.setCenterVelocity(0);
 		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
