@@ -5,9 +5,9 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class ThreeMotorOmniDriveHardware {
-    DcMotor leftMotor;
-    DcMotor rightMotor;
-    DcMotor centerMotor;
+    public DcMotor leftMotor;
+    public DcMotor rightMotor;
+    public DcMotor centerMotor;
 
     // how many ticks are in a rotation
     double TICKS_PER_REV;
@@ -16,49 +16,26 @@ public class ThreeMotorOmniDriveHardware {
 
     // get wheel motors from robot hardware config
     public void init(HardwareMap hardwareMap) {
-        leftMotor = hardwareMap.dcMotor.get("frontLeftMotor");
-        rightMotor = hardwareMap.dcMotor.get("frontRightMotor");
-        centerMotor = hardwareMap.dcMotor.get("backLeftMotor");
-
-        leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        centerMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        TICKS_PER_REV = centerMotor.getMotorType().getTicksPerRev();
+        leftMotor = hardwareMap.dcMotor.get("leftMotor");
+        rightMotor = hardwareMap.dcMotor.get("rightMotor");
+        centerMotor = hardwareMap.dcMotor.get("centerMotor");
     }
 
-    // set all motor directions in one function
-    public void setMotorDirection(DcMotorSimple.Direction left, DcMotorSimple.Direction right, DcMotorSimple.Direction center) {
-        leftMotor.setDirection(left);
-        rightMotor.setDirection(right);
-        centerMotor.setDirection(center);
+    public void setLeftDirection(DcMotorSimple.Direction d) {
+        if (d == DcMotorSimple.Direction.FORWARD)
+            leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        else
+            leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
     }
-    public void setMotorDirection(DcMotorSimple.Direction direction) {
-        leftMotor.setDirection(direction);
-        rightMotor.setDirection(direction);
-        centerMotor.setDirection(direction);
-    }
-
-    // set power of all motors in one function
-    public void setMotorPower(double left, double right, double center) {
-        leftMotor.setPower(left);
-        rightMotor.setPower(right);
-        centerMotor.setPower(center);
-    }
-    public void setMotorPower(double power) {
-        leftMotor.setPower(power);
-        rightMotor.setPower(power);
-        centerMotor.setPower(power);
+    public void setRightDirection(DcMotorSimple.Direction d) { rightMotor.setDirection(d); }
+    public void setCenterDirection(DcMotorSimple.Direction d) {
+        if (d == DcMotorSimple.Direction.FORWARD)
+            centerMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        else
+            centerMotor.setDirection(DcMotorSimple.Direction.FORWARD);
     }
 
-    // get amount of rotations a wheel has made
-    public double getLeftMotorRotations() {
-        return leftMotor.getCurrentPosition() / TICKS_PER_REV;
-    }
-    public double getRightMotorRotations() {
-        return rightMotor.getCurrentPosition() / TICKS_PER_REV;
-    }
-    public double getCenterMotorRotations() {
-        return centerMotor.getCurrentPosition() / TICKS_PER_REV;
-    }
+    public void setLeftPower(double p) { leftMotor.setPower(p); }
+    public void setRightPower(double p) { rightMotor.setPower(p); }
+    public void setCenterPower(double p) { centerMotor.setPower(p); }
 }
