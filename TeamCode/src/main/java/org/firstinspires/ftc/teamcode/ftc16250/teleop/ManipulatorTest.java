@@ -13,7 +13,6 @@ public class ManipulatorTest extends OpMode {
     @Override
     public void init(){
         servo.init(hardwareMap);
-
     }
     @Override
     public void loop(){
