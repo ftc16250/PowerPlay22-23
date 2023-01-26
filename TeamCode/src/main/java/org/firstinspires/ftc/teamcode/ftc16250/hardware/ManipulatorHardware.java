@@ -10,7 +10,6 @@ public class ManipulatorHardware {   public Servo leftServo;
         leftServo = hardwareMap.get(Servo.class, "lS");
         rightServo = hardwareMap.get(Servo.class, "rS");
     }
-
     public void setPosition(double position) {
         rightServo.setDirection(Servo.Direction.REVERSE);
         leftServo.setPosition(position);
