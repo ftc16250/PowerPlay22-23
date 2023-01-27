@@ -11,10 +11,6 @@ public class FourBarArmHardware {
     public void init(HardwareMap hardwareMap) {
         armMotor = hardwareMap.dcMotor.get("armMotor");
     }
-
-    public void setDirection(DcMotorSimple.Direction d) {
-        armMotor.setDirection(d);
-    }
     public void setPower(double p) {
         armMotor.setPower(p);
     }

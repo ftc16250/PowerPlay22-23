@@ -55,13 +55,10 @@ public class DriverControlled extends OpMode {
         else driver.setCenterPower(0);
 
         // four bar arm
-        if (gamepad2.dpad_up) {
-            arm.setDirection(DcMotorSimple.Direction.FORWARD);
+        if (gamepad2.dpad_up)
             arm.setPower(0.5);
-        } else if (gamepad2.dpad_down) {
-            arm.setDirection(DcMotorSimple.Direction.REVERSE);
-            arm.setPower(0.5);
-        }
+        else if (gamepad2.dpad_down)
+            arm.setPower(-0.5);
         else arm.setPower(0.05);
 
         // manipulator
