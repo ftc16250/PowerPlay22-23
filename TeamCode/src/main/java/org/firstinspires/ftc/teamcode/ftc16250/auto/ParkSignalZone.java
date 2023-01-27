@@ -28,19 +28,16 @@ public class ParkSignalZone extends LinearOpMode {
         telemetry.addData("blue", blue);
         telemetry.update();
 
+        robot.move_cm_backwards(15, 1);
+
         // park in location 1 if red
-        if (red > green && red > blue) {
-            robot.move_cm_backwards(20, 1);
-            robot.move_cm_right(80, 2);
-        }
+        if (red > green && red > blue)
+            robot.move_cm_right(60, 2);
         // park in location 2 if green
-        else if (green > red && green > blue) {
-            robot.move_cm_backwards(20, 1);
-        }
+        else if (green > red && green > blue)
+            robot.move_cm_backwards(10, 1);
         // park in location 3 if blue
-        else if (blue > red && blue > green) {
-            robot.move_cm_backwards(15, 1);
-            robot.move_cm_left(80, 2);
-        }
+        else if (blue > red && blue > green)
+            robot.move_cm_left(60, 2);
     }
 }

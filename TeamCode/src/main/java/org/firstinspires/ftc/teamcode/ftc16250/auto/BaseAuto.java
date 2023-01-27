@@ -25,9 +25,9 @@ public class BaseAuto {
         driver.setLeftVelocity(-velocity);
         driver.setRightVelocity(-velocity);
 		sleep(seconds * 1000);
-        driver.setLeftVelocity(0);
+		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+		driver.setLeftVelocity(0);
         driver.setRightVelocity(0);
-        driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
 	public void move_cm_backwards(int cm, int seconds) {
@@ -36,9 +36,9 @@ public class BaseAuto {
 		driver.setLeftVelocity(velocity);
 		driver.setRightVelocity(velocity);
 		sleep(seconds * 1000);
+		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 		driver.setLeftVelocity(0);
 		driver.setRightVelocity(0);
-		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 	}
 
 	public void move_cm_right(int cm, int seconds) {
@@ -46,8 +46,8 @@ public class BaseAuto {
 		int velocity = (int) (cm / driver.CM_PER_ROT * driver.TICKS_PER_REV / seconds);
 		driver.setCenterVelocity(velocity);
 		sleep(seconds * 1000);
-		driver.setCenterVelocity(0);
 		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+		driver.setCenterVelocity(0);
 	}
 
 	public void move_cm_left(int cm, int seconds) {
@@ -55,7 +55,7 @@ public class BaseAuto {
 		int velocity = (int) (cm / driver.CM_PER_ROT * driver.TICKS_PER_REV / seconds);
 		driver.setCenterVelocity(-velocity);
 		sleep(seconds * 1000);
-		driver.setCenterVelocity(0);
 		driver.setMotorMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+		driver.setCenterVelocity(0);
 	}
 }
