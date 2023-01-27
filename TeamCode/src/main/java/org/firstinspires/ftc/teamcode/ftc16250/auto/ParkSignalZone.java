@@ -16,7 +16,7 @@ public class ParkSignalZone extends LinearOpMode {
         waitForStart();
 
         // move robot towards signal cone
-        robot.move_cm_backwards(30, 2);
+        robot.move_cm_backwards(40, 2);
 
         // read color on signal sleeve
         int red = color.getRed();
@@ -28,16 +28,19 @@ public class ParkSignalZone extends LinearOpMode {
         telemetry.addData("blue", blue);
         telemetry.update();
 
-        // move past the signal cone
-        robot.move_cm_backwards(20, 2);
-
         // park in location 1 if red
-        if (red > green && red > blue)
-            robot.move_cm_right(40, 2);
+        if (red > green && red > blue) {
+            robot.move_cm_backwards(20, 1);
+            robot.move_cm_right(80, 2);
+        }
         // park in location 2 if green
-        else if (green > red && green > blue);
+        else if (green > red && green > blue) {
+            robot.move_cm_backwards(20, 1);
+        }
         // park in location 3 if blue
-        else if (blue > red && blue > green)
-            robot.move_cm_left(40, 2);
+        else if (blue > red && blue > green) {
+            robot.move_cm_backwards(15, 1);
+            robot.move_cm_left(80, 2);
+        }
     }
 }

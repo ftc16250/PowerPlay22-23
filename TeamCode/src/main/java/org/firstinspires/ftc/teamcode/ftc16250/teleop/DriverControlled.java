@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
+import org.firstinspires.ftc.teamcode.ftc16250.hardware.ChainLiftHardware;
 import org.firstinspires.ftc.teamcode.ftc16250.hardware.FourBarArmHardware;
 import org.firstinspires.ftc.teamcode.ftc16250.hardware.ManipulatorHardware;
 import org.firstinspires.ftc.teamcode.ftc16250.hardware.ThreeMotorOmniDriveHardware;
@@ -13,6 +14,7 @@ public class DriverControlled extends OpMode {
     public ThreeMotorOmniDriveHardware driver = new ThreeMotorOmniDriveHardware();
     public FourBarArmHardware arm = new FourBarArmHardware();
     public ManipulatorHardware manipulator = new ManipulatorHardware();
+    public ChainLiftHardware chain_lift = new ChainLiftHardware();
 
     public final double MOTOR_SLOW_SPEED = 0.5;
 
@@ -21,19 +23,11 @@ public class DriverControlled extends OpMode {
         driver.init(hardwareMap);
         arm.init(hardwareMap);
         manipulator.init(hardwareMap);
+        chain_lift.init(hardwareMap);
     }
 
     @Override
     public void loop() {
-        telemetry.addData("gamepad1.left_stick_x", gamepad1.left_stick_x);
-        telemetry.addData("gamepad1.left_stick_y", gamepad1.left_stick_y);
-        telemetry.addData("gamepad1.right_stick_x", gamepad1.right_stick_x);
-        telemetry.addData("gamepad1.right_stick_y", gamepad1.right_stick_y);
-        telemetry.addData("gamepad1.left_trigger",  gamepad1.left_trigger);
-        telemetry.addData("gamepad1.right_trigger",  gamepad1.right_trigger);
-        telemetry.addData("left ticks per rev", driver.leftMotor.getMotorType().getTicksPerRev());
-        telemetry.addData("right ticks per rev", driver.rightMotor.getMotorType().getTicksPerRev());
-
         // left wheel
         if (gamepad1.left_stick_y != 0) {
             if (gamepad1.left_bumper) driver.setLeftPower(MOTOR_SLOW_SPEED * sign(gamepad1.left_stick_y));
@@ -75,6 +69,11 @@ public class DriverControlled extends OpMode {
         else manipulator.setPosition(0.5);
 
         // chain lift
+        if (gamepad2.right_trigger > 0)
+            chain_lift.setPower(gamepad2.right_trigger);
+        else if (gamepad2.left_trigger > 0)
+            chain_lift.setPower(-gamepad2.left_trigger);
+        else chain_lift.setPower(0);
     }
 
     int sign(double x)
