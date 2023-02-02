@@ -56,9 +56,9 @@ public class DriverControlled extends OpMode {
 
         // four bar arm
         if (gamepad2.dpad_up)
-            arm.setPower(0.5);
+            arm.setPower(0.7);
         else if (gamepad2.dpad_down)
-            arm.setPower(-0.5);
+            arm.setPower(-0.4);
         else arm.setPower(0.05);
 
         // manipulator
